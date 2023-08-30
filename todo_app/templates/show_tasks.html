@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="width:50%; margin:auto;">
+<h2 style="background-color: purple; color: white; padding: 10px; text-align: center; border: 2px solid white; border-Rounded Rectangle: 50px;">Tasks</h2>
+</div>
+<div style="width:50%; margin:auto;">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in tasks %}
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.taskTitle}}</td>
+            <td>{{item.taskDescription}}</td>
+            <td>Incomplete</td>
+            <td>
+              <a href="{% url 'edit_task' id=item.id %}" class="btn btn-warning btn-sm">Edit</a>
+              <a href="{% url 'delete_task' id=item.id %}" class="btn btn-danger btn-sm">Delete</a>
+              <a href="{% url 'complete_task'  id=item.id %}" class="btn btn-sm btn-success">Complete</a>
+            </td>
+          </td>
+          
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
